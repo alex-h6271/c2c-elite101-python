@@ -14,9 +14,25 @@
     
 def greet_user(name):
     print(f"Hello, {name}, how are you?")
+
+def user_selection(name):
+    print(f"How can I help you today, {name}?")
+
+def menu():
+    print("Please select an option from the list below:")
+    print("1. Placeholder")
+    print("2. Placeholder")
+    print("3. Placeholder")
+    print("4. Placeholder")
     
 user_name = input("Please input your name: ")
 
 user_age = int(input("Please input your age: "))
 
 greet_user(user_name)
+
+user_selection(user_name)
+
+menu()
+
+
