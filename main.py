@@ -11,17 +11,12 @@
     Execution:
         When the script is run directly (not imported as a module), it will execute the main() function.
 """
-
-
-def get_user_name():
-    return input("Please enter your name: ")
-
+    
 def greet_user(name):
     print(f"Hello, {name}, how are you?")
+    
+user_name = input("Please input your name: ")
 
-def main():
-    user_name = get_user_name()
-    greet_user(user_name)
+user_age = int(input("Please input your age: "))
 
-if __name__ == "__main__":
-    main()
+greet_user(user_name)
