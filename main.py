@@ -53,7 +53,7 @@ def user_selection(login):
 
 def display_inventory():
     print("\n**Super Epic Very Real Store Inventory**")
-    print('Displaying store inventory…')
+    print('Displaying store inventory...')
     for product in store_inventory:
         print("----------------------------")
         for key, value in product.items():
@@ -99,7 +99,7 @@ def add_new_product():
     Valid = False
     print("\n **Adding A New Product To The Inventory**")
     print("------------------------------------")
-    type = str(input("Please enter an item type: "))
+    type = str(input("Please enter the item type: "))
     while Valid == False:
         try:
             Valid = False
@@ -118,6 +118,7 @@ def add_new_product():
         Valid = True
     new_product = Product(type, price, total)
     store_inventory.append(new_product.features())
+    print('Item succesfully added!')
 
 def remove_product():  
 
