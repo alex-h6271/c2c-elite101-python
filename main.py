@@ -15,10 +15,14 @@ username = 'Manager123'
 password = '#ManagerSoCool456'
 
 login = False
-
-def display_menu():
+  
+def display_menu(id, login):
     print('\n**Super Epic Very Real Store Inventory System**')
     print("------------------------------------------")
+    if login == True:
+        print(f'What can I assist you with, Manager?')
+    else:
+        print(f'What would you like to do, employee #{id}?')
     print('1. View Store Inventory')
     print('2. Add a Product')
     print('3. Remove a product')
@@ -26,7 +30,7 @@ def display_menu():
 
 def user_selection(login):
     
-    user = int(input('Choose a service: '))
+    user = int(input('Please choose a service: '))
 
     if user == 1:
         display_inventory()
@@ -40,20 +44,38 @@ def user_selection(login):
         remove_product()
     elif user == 4:
         if login == True:
-            print('Signing out of admin console...')
+            print('Signing you out of the admin console...')
         print('Exiting program...')
     else:
-        print('Invalid Input')
+        print('Oops! that is an invalid Input')
 
     return user, login
 
 def display_inventory():
     print("\n**Super Epic Very Real Store Inventory**")
+    print('Displaying store inventory…')
     for product in store_inventory:
         print("----------------------------")
         for key, value in product.items():
              print(f"{key}:{value}") 
     print("___________________________")
+
+def employee_login():
+    id = 0
+    print('\n**Super Epic Very Real Store Inventory System**')
+    print("------------------------------------------")
+    print('Hello, it seems you are attempting to access the internal store inventory system, could you please lrovide your ID number?')
+  
+    while id == 0:
+        try:
+            id = int(input('Please enter your employee ID number: '))
+        except ValueError:
+            print('Oops! Seems like whatever you entered is invalid! Try again!')
+            continue
+    
+    print(f'Valid ID number detected: Welcome employee #{id}!')
+  
+    return id
     
 def admin_login(username, password):
     login = False
@@ -62,6 +84,7 @@ def admin_login(username, password):
     password_guess = ' '
     print("\n**Super Epic Cool Store Admin Console**")
     print("---------------------------------------")
+    print('It appears you are trying to access a function that requires administrative permissions, plese provide the required login information.')
     
     while username_guess != username and password_guess != password:
         username_guess = str(input('Enter the admin username: '))
@@ -76,21 +99,21 @@ def add_new_product():
     Valid = False
     print("\n **Adding A New Product To The Inventory**")
     print("------------------------------------")
-    type = str(input("Enter a type: "))
+    type = str(input("Please enter an item type: "))
     while Valid == False:
         try:
             Valid = False
-            price = float(input("Enter the price: "))
+            price = float(input("Please enter the price: "))
         except ValueError:
-            print('Invalid Input')
+            print('Sorry, that is an invalid Input!')
             continue
         Valid = True
     Valid = False
     while Valid == False:
         try:
-            total = int(input("Enter the amount: "))
+            total = int(input("Please enter the amount: "))
         except total == 0:
-            print('You can\'t add a product with 0 stock')
+            print('Oops! You can\'t add a product with 0 stock!')
             continue
         Valid = True
     new_product = Product(type, price, total)
@@ -103,7 +126,7 @@ def remove_product():
     print("\n **Removing A Product From The Inventory**")
     print("------------------------------------")
     try:
-        PID = int(input('Input the Product ID: '))
+        PID = int(input('Please input the Product ID of tbe requested item: '))
     except ValueError:
         PID = 0
         
@@ -115,9 +138,9 @@ def remove_product():
 
             break
     if to_delete_index == -1:
-        print('This item is not in the store inventory')
+        print('Sorry, this item is currently not in the store inventory')
     store_inventory.pop(to_delete_index)
-    print('Product removed succesfully')
+    print('The requested product has been removed succesfully')
 
 class Product:
     def __init__(self, type, price, total):
@@ -134,8 +157,9 @@ class Product:
              }
 
 user = 0
+id = employee_login()
 while user != 4:
-    display_menu()
+    display_menu(id, login)
     user, login = user_selection(login)
 
 
