@@ -97,7 +97,7 @@ def admin_login(username, password):
 
 def add_new_product():
     Valid = False
-    print("\n **Adding A New Product To The Inventory**")
+    print("\n**Adding A New Product To The Inventory**")
     print("------------------------------------")
     type = str(input("Please enter the item type: "))
     while Valid == False:
@@ -124,7 +124,7 @@ def remove_product():
 
     to_delete_index = -1
     display_inventory()
-    print("\n **Removing A Product From The Inventory**")
+    print("\n**Removing A Product From The Inventory**")
     print("------------------------------------")
     try:
         PID = int(input('Please input the Product ID of tbe requested item: '))
