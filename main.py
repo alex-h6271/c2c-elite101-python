@@ -82,7 +82,7 @@ def admin_login(username, password):
     username_guess = ' '
     
     password_guess = ' '
-    print("\n**Super Epic Cool Store Admin Console**")
+    print("\n**Super Epic Very Real Store Admin Console**")
     print("---------------------------------------")
     print('It appears you are trying to access a function that requires administrative permissions, plese provide the required login information.')
     
